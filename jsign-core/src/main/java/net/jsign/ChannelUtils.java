@@ -77,7 +77,7 @@ public class ChannelUtils {
             throw new IOException("Cannot insert data after the end of the file");
         }
 
-        File backupFile = File.createTempFile("jsign", ".tmp");
+        File backupFile = Files.createTempFile("jsign", ".tmp").toFile();
         try (SeekableByteChannel backupChannel = Files.newByteChannel(backupFile.toPath(), StandardOpenOption.READ, StandardOpenOption.WRITE)) {
             copy(channel, backupChannel);
 
